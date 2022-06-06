@@ -2,7 +2,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
 import { Navbar } from "./components/Navbar";
-import { Product } from "./components/Product";
+import { Products } from "./components/Products";
 import Login from "./pages/Login";
 import RequiredAuth from "./hoc/RequiredAuth";
 import Home from "./pages/Home";
@@ -18,11 +18,11 @@ function App() {
         <Route path="" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route
-          path="Product"
+          path="Products"
           element={
             
               
-             <RequiredAuth> <Product /></RequiredAuth>
+             <RequiredAuth> <Products /></RequiredAuth>
             
             
           }
