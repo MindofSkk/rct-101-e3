@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 
 const Product = () => {
   // Note: this id should come from api
+  const [products,setProducts]=useState([]);
+
+  useEffect(()=>{ 
+    const fecthProducts=async()=>{
+      fetch("http://localhost:8080/products")
+      .then((r)=>r.json())
+      .then((d)=>{ 
+        setProducts(d)
+      });
+    };
+    fecthProducts();
+  },[]);
+
+  
+
   const product = { id: 1 };
   return (
     <div data-cy={`product-${product.id}`}>
@@ -18,6 +34,10 @@ const Product = () => {
         <button data-cy="product-decrement-cart-item-count-button"></button>
         <button data-cy="product-remove-cart-item-button"></button>
       </div>
+
+      {products.map((e)=>(
+        <div>{e.id}</div>
+      ))}
     </div>
   );
 };
